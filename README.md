@@ -1,4 +1,30 @@
-# RDS CLI-Only Access with Britive PAM
+# Securing Access to Critical Data on Amazon RDS MySQL with Britive PAM
+
+## Introduction
+As VP of Solutions Engineering at Britive, I'm incredibly proud of our team's work and the significant wins we've achieved in the MENA region. While my role involves managing a large, talented team across the globe, I remain deeply hands-on, especially when working with our esteemed customers worldwide.
+
+I believe that true leadership means staying close to the technical challenges our customers face. By personally diving deep into their business requirements and technical pain points, I gain invaluable insights that help us continuously improve our product. This hands-on approach allows me to test solutions in real-world scenarios and provide meaningful feedback to our Engineering and Product Management leadership teams.
+
+This repository represents just one snippet of the comprehensive work my team delivered as part of a major project in the MENA region. The customer needed to secure and manage privileged access across their entire cloud infrastructure while meeting stringent SAMA compliance requirements.
+
+Project Scope - Use Cases Enabled & Protected:
+As part of this engagement, we successfully implemented Britive PAM across multiple platforms and services:
+
+✅ AWS - Multi-account privileged access management
+✅ GCP - Cloud resource access control
+✅ ArgoCD - GitOps deployment platform security
+✅ GitHub - Source code repository access management
+✅ Customer Applications - Custom enterprise application protection
+✅ SaaS Applications - Third-party SaaS access governance
+✅ Agentic AI - AI agents using Amazon Bedrock and AgentCore
+✅ Amazon RDS - Database CLI-only access (detailed in this repo)
+
+This repository focuses specifically on the RDS CLI-only access solution, which blocks AWS Console UI access while enabling seamless command-line operations for database administrators. This approach ensures security doesn't become a bottleneck for operational efficiency while maintaining full compliance with SAMA Cybersecurity Framework requirements.
+
+## About This Solution
+This documentation demonstrates how we enabled database administrators to manage Amazon RDS Aurora clusters using AWS CLI commands while completely blocking access through the AWS Console UI, all powered by Britive's Just-in-Time Privileged Access Management platform.
+
+
 
 ## Use Case
 
