@@ -193,6 +193,15 @@ The IAM policy uses Attribute-Based Access Control (ABAC) with the `RdsIdentifie
 - **Purpose**: Read database logs through CloudWatch
 - **Scope**: Only logs for the specific RDS cluster and instances
 
+## Britive UI Config
+
+<img width="1079" height="522" alt="image" src="https://github.com/user-attachments/assets/05f704cb-dd9f-42de-ae67-29ae2ee46fd2" />
+
+<img width="1430" height="692" alt="image" src="https://github.com/user-attachments/assets/df125c4b-76f4-4591-bcbc-459b69691b18" />
+
+
+
+
 ## How It Works
 
 ### Automatic Profile Checkout
