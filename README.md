@@ -1,15 +1,11 @@
 # Enterprise Database Security for Cloud Hosted Data (Amazon RDS MySQL) using PAM Zero Trust Model
 
 ## Introduction
-As VP of Solutions Engineering at Britive, I'm incredibly proud of our team's work and the significant wins we've achieved in the MENA region. While my role involves managing a large, talented team across the globe, I remain deeply hands-on, especially when working with our esteemed customers worldwide.
+As VP of Solutions Engineering at Britive, I believe true leadership means staying close to the technical challenges our customers face. While managing a global team, I remain hands-on—personally diving into business requirements and technical pain points to gain insights that drive product improvement and provide meaningful feedback to our Engineering and Product teams.
 
-I believe that true leadership means staying close to the technical challenges our customers face. By personally diving deep into their business requirements and technical pain points, I gain invaluable insights that help us continuously improve our product. This hands-on approach allows me to test solutions in real-world scenarios and provide meaningful feedback to our Engineering and Product Management leadership teams.
+This repository showcases one component of a major MENA region project where we secured privileged access across an entire cloud infrastructure while meeting stringent SAMA compliance requirements.
 
-This repository represents just one snippet of the comprehensive work my team delivered as part of a major project in the MENA region. The customer needed to secure and manage privileged access across their entire cloud infrastructure while meeting stringent SAMA compliance requirements.
-
-Project Scope - Use Cases Enabled & Protected:
-As part of this engagement, we successfully implemented Britive PAM across multiple platforms and services:
-
+**Project Scope - Platforms Protected:**
 - ✅ AWS - Multi-account privileged access management
 - ✅ GCP - Cloud resource access control
 - ✅ ArgoCD - GitOps deployment platform security
@@ -19,71 +15,48 @@ As part of this engagement, we successfully implemented Britive PAM across multi
 - ✅ Agentic AI - AI agents using Amazon Bedrock and AgentCore
 - ✅ Amazon RDS - Database CLI-only access (detailed in this repo)
 
-This repository focuses specifically on the RDS CLI-only access solution, which blocks AWS Console UI access while enabling seamless command-line operations for database administrators. This approach ensures security doesn't become a bottleneck for operational efficiency while maintaining full compliance with SAMA Cybersecurity Framework requirements.
-
-## About This Solution
-This documentation demonstrates how we enabled database administrators to manage Amazon RDS Aurora clusters using AWS CLI commands while completely blocking access through the AWS Console UI, all powered by Britive's Just-in-Time Privileged Access Management platform.
-
-
+This repository focuses on the RDS CLI-only access solution, enabling seamless command-line operations for database administrators while blocking AWS Console UI access—ensuring security never bottlenecks operational efficiency.
 
 ## Use Case
 
-Allow RDS Database Managers to access and manage RDS databases using AWS CLI commands while completely blocking access through the AWS Console UI. This ensures:
-
-- Security teams maintain control over database access
-- All database operations are auditable through CLI commands
+Enable RDS Database Managers to manage Amazon RDS Aurora clusters via AWS CLI while completely blocking Console UI access. This delivers:
+- Centralized security team control over database access
+- Full auditability through CLI command logging
 - Just-in-time access with automatic credential rotation
 - Least privilege access scoped to specific RDS instances
 
 ## Solution Overview
 
-This solution uses Britive's Privileged Access Management (PAM) with AWS credential process integration to provide seamless, secure CLI access to RDS databases without manual credential management.
+Britive's PAM integrates with AWS credential process to provide seamless, secure CLI access without manual credential management.
 
 ## Architecture Components
 
-### 1. Britive Configuration
-- **Platform**: Britive PAM system
-- **Profile**: `AWS Standalone/123456789012 (Britive-AWS)/rds-db-cluster-abc123`
-- **Tenant**: `mena-poc`
+- **Britive Profile**: `AWS Standalone/123456789012 (Britive-AWS)/rds-db-cluster-abc123`
+- **Britive Tenant**: `mena-poc`
+- **Local Configs**: `~/.britive/pybritive.config` and `~/.aws/credentials`
+- **AWS IAM**: ABAC using Principal Tags with resource-scoped permissions
 
-### 2. Local Configuration Files
-- **Pybritive Config**: `~/.britive/pybritive.config`
-- **AWS Credentials**: `~/.aws/credentials`
+## Implementation
 
-### 3. AWS IAM Policy
-- Attribute-Based Access Control (ABAC) using Principal Tags
-- Resource-scoped permissions for specific RDS cluster
+### Step 1: Britive Configuration
 
-## Implementation Steps
-
-### Step 1: Configure Pybritive
-
-Create the Britive configuration file at `~/.britive/pybritive.config`:
-
+Create `~/.britive/pybritive.config`:
 ```ini
 [company-rds-1]
 profile=AWS Standalone/123456789012 (Britive-AWS)/rds-db-cluster-abc123
 tenant=mena-poc
 ```
 
-**What this does:**
-- Maps a local profile name (`company-rds-1`) to a Britive PAM profile
-- Specifies the Britive tenant for authentication
+### Step 2: AWS Credentials Configuration
 
-### Step 2: Configure AWS Credentials
-
-Create/update the AWS credentials file at `~/.aws/credentials`:
-
+Create/update `~/.aws/credentials`:
 ```ini
 [company-rds-1]
 credential_process=pybritive-aws-cred-process --profile "AWS Standalone/123456789012 (Britive-AWS)/rds-db-cluster-abc123" -t mena-poc
 region=eu-west-1
 ```
 
-**What this does:**
-- Uses AWS credential process to dynamically fetch credentials from Britive
-- Automatically handles credential checkout when AWS CLI commands are run
-- Sets the default region for RDS operations
+The credential process automatically handles Britive checkout when running AWS CLI commands.
 
 ### Step 3: Create IAM Policy in AWS
 
