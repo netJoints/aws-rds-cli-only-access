@@ -197,12 +197,12 @@ When an RDS manager runs an AWS CLI command:
 
 ### Security Features
 
-✅ **No UI Access**: The IAM policy doesn't grant any AWS Console permissions
-✅ **Automatic Checkout**: No manual credential management required
-✅ **Time-Limited Access**: Credentials expire automatically
-✅ **Scoped Access**: Can only access the specific RDS cluster assigned
-✅ **Audit Trail**: All operations are logged in CloudTrail
-✅ **Zero Standing Privileges**: Access is just-in-time
+- ✅ **No UI Access**: The IAM policy doesn't grant any AWS Console permissions
+- ✅ **Automatic Checkout**: No manual credential management required
+- ✅ **Time-Limited Access**: Credentials expire automatically
+- ✅ **Scoped Access**: Can only access the specific RDS cluster assigned
+- ✅ **Audit Trail**: All operations are logged in CloudTrail
+- ✅ **Zero Standing Privileges**: Access is just-in-time
 
 ### Access Restrictions
 
@@ -498,15 +498,15 @@ This solution helps meet various compliance requirements:
 
 This implementation provides:
 
-✅ **Secure CLI-only access** to RDS databases
-✅ **No AWS Console UI access** for database managers
-✅ **Automatic credential management** via Britive PAM
-✅ **Least privilege access** scoped to specific clusters
-✅ **Just-in-time access** with automatic expiration
-✅ **Comprehensive audit trail** for compliance
-✅ **Seamless user experience** with standard AWS CLI commands
-✅ **Scalable architecture** supporting multiple databases and users
-✅ **SAMA Cybersecurity Framework compliant** for financial institutions
+- ✅ **Secure CLI-only access** to RDS databases
+- ✅ **No AWS Console UI access** for database managers
+- ✅ **Automatic credential management** via Britive PAM
+- ✅ **Least privilege access** scoped to specific clusters
+- ✅ **Just-in-time access** with automatic expiration
+- ✅ **Comprehensive audit trail** for compliance
+- ✅ **Seamless user experience** with standard AWS CLI commands
+- ✅ **Scalable architecture** supporting multiple databases and users
+- ✅ **SAMA Cybersecurity Framework compliant** for financial institutions
 
 The solution ensures security teams maintain control while enabling RDS managers to perform their duties efficiently without manual credential management or security becoming a bottleneck.
 
