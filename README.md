@@ -522,4 +522,4 @@ The solution ensures security teams maintain control while enabling RDS managers
 | **Article 8.1.1** - Data Protection | Access to sensitive databases restricted to authorized personnel only |
 | **Article 9.1.1** - Security Monitoring | Continuous audit trail enables security monitoring and alerting |
 
-This solution is particularly well-suited for financial institutions operating under SAMA regulations in Saudi Arabia, providing the necessary controls for database access management while maintaining operational efficiency.
+This solution is well-suited for any financial institutions operating under SOC2, ISO 27001, SAMA (Saudi Arabia), etc. compliance regulations. It provides the necessary controls for database access management while maintaining operational efficiency.
